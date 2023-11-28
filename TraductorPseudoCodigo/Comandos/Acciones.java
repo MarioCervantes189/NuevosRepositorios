@@ -1,5 +1,5 @@
 package TraductorPseudoCodigo.Comandos;
 
-public class Comando {
+public class Acciones {
     
 }
