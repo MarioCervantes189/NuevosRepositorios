@@ -85,8 +85,9 @@ public class OperacionesMatematicas {
             case "Real":
                 tablasDouble.put(nombre, 0);
                 break;
+            default:
+                System.out.println("Error. Tipo de dato no valido");
         }
-        System.out.println("Error. Tipo de dato no valido");
     }
 
     public void asignarValor(String nombre, double valor){

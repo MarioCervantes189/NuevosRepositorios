@@ -14,6 +14,11 @@ public class Acciones {
         boolean saltoLinea = false;
         String restante = "";
         switch (operacion){
+            case "Leer":
+                variable = linea.split(" ")[1];
+                System.out.print("Ingrese el valor de "+variable+": ");
+                op.asignarValor(variable, sc.nextDouble());
+                break;
             
             case "ImprimeS":
                 saltoLinea = true;
@@ -50,7 +55,7 @@ public class Acciones {
                     }                  
                 }
                 op.vaciarPilaOperador();
-                System.out.println(variable+" = "+op.obtenerResultado());
+                op.asignarValor(variable, op.obtenerResultado());
         }
 
     }
