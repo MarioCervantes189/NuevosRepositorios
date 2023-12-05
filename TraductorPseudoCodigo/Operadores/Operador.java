@@ -1,5 +1,4 @@
-package TraductorPseudoCodigo.Operadores;
-
+package Operadores;
 public enum Operador{
     PRIMERO(new String[]{"^"}, 3),
     SEGUNDO(new String[]{"*", "/"}, 2),
