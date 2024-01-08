@@ -32,10 +32,13 @@ public class OperacionesMatematicas {
     }
 
     public void colocarOperadorenPila(String operador) {
-        if (pilaOperadores.isEmpty()) {
+        if (pilaOperadores.isEmpty() || operador.equals(Operador.getParentesisAbierto())) {
             pilaOperadores.push(operador);
         } else {
-            if (Operador.isMayor(operador, pilaOperadores.peek())) {
+            if(operador.equals(Operador.getParentesisCerrado())){
+                vaciarPilaOperador();
+            }
+            else if (Operador.isMayor(operador, pilaOperadores.peek())) {
                 pilaOperadores.push(operador);
             } else {
                 while (!pilaOperadores.isEmpty()) {
@@ -65,11 +68,21 @@ public class OperacionesMatematicas {
     }
 
     public void vaciarPilaOperador(){
-        while(!pilaOperadores.isEmpty()){
-            double num2 = pilaNumeros.pop();
-            double num1 = pilaNumeros.pop();
-            String operadorAux = pilaOperadores.pop();
-            pilaNumeros.push(realizarOperacion(num2, num1, operadorAux));
+        while(true){
+            if(pilaOperadores.isEmpty()){
+                return;
+            }
+            else if(pilaOperadores.peek().equals(Operador.getParentesisAbierto())){
+                pilaOperadores.pop();
+                return;
+            }
+            else{
+                double num2 = pilaNumeros.pop();
+                double num1 = pilaNumeros.pop();
+                String operadorAux = pilaOperadores.pop();
+                pilaNumeros.push(realizarOperacion(num2, num1, operadorAux));
+                
+            }
         }
     }
 

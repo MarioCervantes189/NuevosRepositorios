@@ -1,0 +1,9 @@
+Entero base
+Entero altura
+Real area
+Leer base
+Leer altura
+area = ( base + 2 ) * altura / 2
+ImprimeS ('El area es: ',area)
+
+
