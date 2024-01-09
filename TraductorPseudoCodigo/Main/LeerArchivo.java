@@ -17,7 +17,7 @@ public class LeerArchivo {
 			String s;
 			while((s = bf.readLine())!=null) {//Hasta que no haya linea para leer
 				if(!s.replace(" ", "").equals(""))
-				informacion.add(s);//Se anade la linea a la
+				informacion.add(s);//Se anade la linea
 				}
 			}
 		catch(IOException ex) {

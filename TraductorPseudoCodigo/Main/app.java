@@ -10,8 +10,15 @@ public class app {
         ArrayList<String> datos = LeerArchivo.leerTexto();
         Acciones accion = new Acciones();
         for(String dato : datos){
-            accion.accion(dato);
+            
+            if(dato.contains("}")){
+                break;
+            }
+            else if(!dato.contains("{")){
+                accion.accion(dato);
+            }
         }
+        
 
         /* 
         //accion.accion("area = 2 * 3 - 4 / 5 + 6 ^ 7");
