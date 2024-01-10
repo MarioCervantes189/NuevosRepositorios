@@ -88,6 +88,7 @@ public class Main {
             writer.write("        zoom: 6,\n");
             writer.write("        center: { lat: 40.4168, lng: -3.7038 } // Centrar en Madrid o ajustar según necesidad\n");
             writer.write("      });\n");
+            
 
             // Añadir marcadores para cada ciudad en la ruta
             for (int ciudadIndex : ruta) {
@@ -99,6 +100,27 @@ public class Main {
                 writer.write("        title: '" + nombreCiudad + "'\n");
                 writer.write("      });\n");
             }
+
+            // Trazar la ruta como una línea poligonal
+            writer.write("      var rutaCoords = [];\n");
+            for (int ciudadIndex : ruta) {
+            String nombreCiudad = nombresCiudades[ciudadIndex];
+            Coordenada coordenada = obtenerCoordenadasCiudad(nombreCiudad, coordenadasCiudades);
+            writer.write("      rutaCoords.push({ lat: " + coordenada.getLatitud() + ", lng: " + coordenada.getLongitud() + " });\n");
+}
+
+            writer.write("      var rutaPolyline = new google.maps.Polyline({\n");
+            writer.write("        path: rutaCoords,\n");
+            writer.write("        geodesic: true,\n");
+            writer.write("        strokeColor: '#FF0000',\n");  // Color rojo
+            writer.write("        strokeOpacity: 1.0,\n");
+            writer.write("        strokeWeight: 2\n");
+            writer.write("      });\n");
+
+            writer.write("      rutaPolyline.setMap(mapa);\n");
+
+            writer.write("    }\n");
+            writer.write("  </script>\n");
 
             writer.write("    }\n");
             writer.write("  </script>\n");
