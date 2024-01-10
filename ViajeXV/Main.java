@@ -42,14 +42,23 @@ public class Main {
         // París, Roma, Varsovia, Berlín, Ámsterdam, Brujas, Londres, París
         ArrayList<Integer> ciudades = new ArrayList<>();
         ciudades.add(1);
+        ciudades.add(5);
+        ciudades.add(4);
+        ciudades.add(6);
+        ciudades.add(8);
+        ciudades.add(11);
+        ciudades.add(9);
+        ciudades.add(1);
+        /* 
+        ciudades.add(8);
         ciudades.add(3);
         ciudades.add(11);
         ciudades.add(9);
         ciudades.add(2);
         ciudades.add(6);
         ciudades.add(7);
-        ciudades.add(1);
-
+        ciudades.add(8);
+        */
         ArrayList<Integer> rutaOptima = FuerzaBruta.fuerzaBruta(ciudades, distancias);
         System.out.println("Ruta óptima: " + obtenerNombresCiudades(rutaOptima, nombresCiudades));
         System.out.println("Longitud óptima: " + FuerzaBruta.calcularLongitudRuta(rutaOptima, distancias));

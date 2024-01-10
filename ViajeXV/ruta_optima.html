@@ -17,9 +17,24 @@
         title: 'PARIS'
       });
       new google.maps.Marker({
-        position: { lat: 41.9028, lng: 12.4964 },
+        position: { lat: 51.2093, lng: 3.2247 },
         map: mapa,
-        title: 'ROMA'
+        title: 'BRUGES'
+      });
+      new google.maps.Marker({
+        position: { lat: 38.7223, lng: -9.13934 },
+        map: mapa,
+        title: 'LISBON'
+      });
+      new google.maps.Marker({
+        position: { lat: 37.9838, lng: 23.7275 },
+        map: mapa,
+        title: 'ATHENS'
+      });
+      new google.maps.Marker({
+        position: { lat: 50.4501, lng: 30.5234 },
+        map: mapa,
+        title: 'KIEV'
       });
       new google.maps.Marker({
         position: { lat: 52.2297, lng: 21.0122 },
@@ -32,33 +47,18 @@
         title: 'BERLIN'
       });
       new google.maps.Marker({
-        position: { lat: 52.3702, lng: 4.89517 },
-        map: mapa,
-        title: 'AMSTERDAM'
-      });
-      new google.maps.Marker({
-        position: { lat: 51.2093, lng: 3.2247 },
-        map: mapa,
-        title: 'BRUGES'
-      });
-      new google.maps.Marker({
-        position: { lat: 51.5074, lng: -0.1278 },
-        map: mapa,
-        title: 'LONDON'
-      });
-      new google.maps.Marker({
         position: { lat: 48.8566, lng: 2.35222 },
         map: mapa,
         title: 'PARIS'
       });
       var rutaCoords = [];
       rutaCoords.push({ lat: 48.8566, lng: 2.35222 });
-      rutaCoords.push({ lat: 41.9028, lng: 12.4964 });
+      rutaCoords.push({ lat: 51.2093, lng: 3.2247 });
+      rutaCoords.push({ lat: 38.7223, lng: -9.13934 });
+      rutaCoords.push({ lat: 37.9838, lng: 23.7275 });
+      rutaCoords.push({ lat: 50.4501, lng: 30.5234 });
       rutaCoords.push({ lat: 52.2297, lng: 21.0122 });
       rutaCoords.push({ lat: 52.52, lng: 13.405 });
-      rutaCoords.push({ lat: 52.3702, lng: 4.89517 });
-      rutaCoords.push({ lat: 51.2093, lng: 3.2247 });
-      rutaCoords.push({ lat: 51.5074, lng: -0.1278 });
       rutaCoords.push({ lat: 48.8566, lng: 2.35222 });
       var rutaPolyline = new google.maps.Polyline({
         path: rutaCoords,
