@@ -1,7 +1,7 @@
-		entero base
-		entero altura
-		real area
-		leer base
-		leer altura
-		area = base*altura / 2
-		imprime ("El area es ", area)
+entero base
+entero altura
+real area
+leer base
+leer altura
+area = base*altura / 2
+imprime ("El area es ", area)
