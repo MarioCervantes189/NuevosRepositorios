@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ruta Óptima</title>
+</head>
+<body>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJAyvtJjf7rIuTZ7IsQU-Qf5lmKro60AE&callback=inicializarMapa"></script>
+  <script>
+    function inicializarMapa() {
+      var mapa = new google.maps.Map(document.getElementById('mapa'), {
+        zoom: 6,
+        center: { lat: 40.4168, lng: -3.7038 } // Centrar en Madrid o ajustar según necesidad
+      });
+      new google.maps.Marker({
+        position: { lat: 48.8566, lng: 2.35222 },
+        map: mapa,
+        title: 'PARIS'
+      });
+      new google.maps.Marker({
+        position: { lat: 41.9028, lng: 12.4964 },
+        map: mapa,
+        title: 'ROMA'
+      });
+      new google.maps.Marker({
+        position: { lat: 52.2297, lng: 21.0122 },
+        map: mapa,
+        title: 'WARSAW'
+      });
+      new google.maps.Marker({
+        position: { lat: 52.52, lng: 13.405 },
+        map: mapa,
+        title: 'BERLIN'
+      });
+      new google.maps.Marker({
+        position: { lat: 52.3702, lng: 4.89517 },
+        map: mapa,
+        title: 'AMSTERDAM'
+      });
+      new google.maps.Marker({
+        position: { lat: 51.2093, lng: 3.2247 },
+        map: mapa,
+        title: 'BRUGES'
+      });
+      new google.maps.Marker({
+        position: { lat: 51.5074, lng: -0.1278 },
+        map: mapa,
+        title: 'LONDON'
+      });
+      new google.maps.Marker({
+        position: { lat: 48.8566, lng: 2.35222 },
+        map: mapa,
+        title: 'PARIS'
+      });
+    }
+  </script>
+  <div id="mapa" style="height: 500px;"></div>
+</body>
+</html>
