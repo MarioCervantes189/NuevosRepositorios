@@ -1,6 +1,5 @@
 entero base
 entero altura
-entero altura
 altura = 10 + 1
 imprime (base)
 imprime (altura)

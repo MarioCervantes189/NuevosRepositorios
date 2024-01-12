@@ -3,5 +3,7 @@ entero altura
 entero area
 leer base
 leer altura
-area = base*altura / 2
-imprime ("El area es ", area)
+area = base * altura / 2
+SimprimeS El area es
+imprime (area)
+imprime (2+((2*3)/2))

@@ -24,14 +24,14 @@ public class Memory {
         for (Map.Entry<String, Variable> entry : variables.entrySet()) {
             String variableName = entry.getKey();
             Variable variable = entry.getValue();
-    
+
             // Reemplaza la variable en la expresión por su valor si no es nulo
-            String variableValue = (variable.getValue() != null) ? "\"" + variable.getValue() + "\"" : "null";
-            
+            String variableValue = (variable.getValue() != null) ? String.valueOf(variable.getValue()) : "null";
+
             // Utiliza expresiones regulares para encontrar la variable en la expresión y reemplazarla
             expression = expression.replaceAll("\\b" + variableName + "\\b(?![^\\\"]*\\\")", variableValue);
         }
-    
+
         return expression;
     }
       

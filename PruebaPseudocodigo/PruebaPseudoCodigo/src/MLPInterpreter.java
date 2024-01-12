@@ -34,13 +34,33 @@ public class MLPInterpreter {
         } else if (line.startsWith("imprime")) {
             // Operación de salida
             interpretOutputOperation(line);
+        }
+          else if (line.startsWith("SimprimeS")) {
+            interpretOutputStrings(line);
         } else {
             // Asignación u otra operación
             interpretAssignmentOrOperation(line);
         }
     }
 
-    private void interpretVariableDeclaration(String line) {
+    private void interpretOutputStrings(String line) {
+        
+            // Implementa la lógica para manejar operaciones de salida
+            // Formato esperado: imprime expresion
+             
+    String[] tokens = line.split("\\s+", 2);
+
+        if (tokens.length == 2) {
+            String keyword = tokens[0];
+                    String expresion = tokens[1];
+
+                    if (keyword.equals("SimprimeS")) {
+                        System.out.println(expresion);
+                    }
+                }
+            }
+
+            private void interpretVariableDeclaration(String line) {
         // Implementa la lógica para manejar la declaración de variables
             // Formato esperado: tipo nombre
     String[] tokens = line.split("\\s+");
@@ -60,7 +80,7 @@ public class MLPInterpreter {
         } else {
             System.err.println("Error: Formato incorrecto en la declaración de variable.");
         }
-    } // Add this closing curly brace
+    }
 
     private boolean isValidType(String type) {
         return type.equals("entero") || type.equals("real") || type.equals("cadena");
@@ -97,7 +117,7 @@ public class MLPInterpreter {
         } else {
             System.err.println("Error: Formato incorrecto en la operación de entrada.");
         }
-    } // Add this closing curly brace
+    }
 
     private void assignVariableValue(String variableName, String value) {
         Variable variable = memory.getVariable(variableName);
@@ -105,8 +125,10 @@ public class MLPInterpreter {
 
         if (type.equals("entero")) {
             try {
-                int intValue = Integer.parseInt(value);
+                double doubleValue = Double.parseDouble(value);
+                Integer intValue = (int) doubleValue;
                 variable.setValue(intValue);
+
             } catch (NumberFormatException e) {
                 System.err.println("Error: El valor proporcionado no es un entero válido.");
             }
@@ -140,13 +162,16 @@ public class MLPInterpreter {
             } catch (Exception e) {
                 System.err.println("Error al evaluar la expresión: " + e.getMessage());
             }
+            
         } else {
             System.err.println("Error: Palabra clave incorrecta en la operación de salida.");
         }
-        } else {
-            System.err.println("Error: Formato incorrecto en la operación de salida.");
+        } 
+            else {
+                System.err.println("Error: Formato incorrecto en la operación de salida.");
+            }
         }
-    } // Add this closing curly brace
+    
 
     /**
      * @param expression
@@ -229,7 +254,7 @@ private boolean isOperator(char op) {
 
 private boolean hasPrecedence(char op1, char op2) {
     // Verifica la precedencia de dos operadores
-    return getPrecedence(op1) >= getPrecedence(op2);
+    return getPrecedence(op1) > getPrecedence(op2);
 }
 
 private int getPrecedence(char op) {
