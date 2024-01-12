@@ -34,15 +34,6 @@ public class MLPInterpreter {
         } else if (line.startsWith("imprime")) {
             // Operación de salida
             interpretOutputOperation(line);
-        } else if (line.startsWith("si")) {
-            // Instrucción condicional
-            interpretConditionalStatement(line);
-        } else if (line.startsWith("mientras")) {
-            // Instrucción de repetición
-            interpretLoopStatement(line);
-        } else if (line.startsWith("funcion")) {
-            // Declaración de funciones
-            interpretFunctionDeclaration(line);
         } else {
             // Asignación u otra operación
             interpretAssignmentOrOperation(line);
@@ -61,7 +52,7 @@ public class MLPInterpreter {
             // Verifica si el tipo es válido (entero, real, cadena)
             if (isValidType(tipo)) {
                 // Agrega la variable a la tabla de símbolos (Memory)
-                Variable variable = new Variable(tipo, null);
+                Variable variable = new Variable(tipo, 0);
                 memory.addVariable(nombre, variable);
             } else {
                 System.err.println("Error: Tipo de variable no válido en la declaración.");
@@ -189,7 +180,18 @@ public class MLPInterpreter {
                 // Cambio en esta línea: utiliza containsKey en lugar de contains para verificar la existencia de la variable
                 // Si el token es una variable, obtén su valor y colócalo en la pila de operandos
                 Variable variable = memory.getVariable(token);
-                operandStack.push((Double) variable.getValue());
+                Object value = variable.getValue();
+
+                if (value instanceof Integer){
+                    operandStack.push(((Integer) value).doubleValue());
+                } else if (value instanceof Double){
+                    operandStack.push((Double) value);
+                } else if (value instanceof String){
+                    operandStack.push(Double.parseDouble((String) value));
+                } else {
+                    System.err.println("Error: Tipo de variable no válido en la expresión.");
+                }
+                
             }
         }
     
@@ -277,18 +279,6 @@ private double performOperation(double operand1, double operand2, char operator)
             throw new IllegalArgumentException("Error: Operador no válido");
     }
 }
-
-    private void interpretConditionalStatement(String line) {
-        // Implementa la lógica para manejar instrucciones condicionales
-    }
-
-    private void interpretLoopStatement(String line) {
-        // Implementa la lógica para manejar instrucciones de repetición
-    }
-
-    private void interpretFunctionDeclaration(String line) {
-        // Implementa la lógica para manejar la declaración de funciones
-    }
 
     private void interpretAssignmentOrOperation(String line) {
         System.out.println("Depuración: Interpretando línea: " + line);

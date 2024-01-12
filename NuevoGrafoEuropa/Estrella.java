@@ -60,14 +60,15 @@ public void setCiudadDestino(int ciudadDestino) {
     this.ciudadDestino = ciudadDestino;
     
 }
-public static int calcularDistancia(ArrayList<Integer> listaVisitados, int[][] matrizAdyacencia) {
+public static int calcularDistancia(ArrayList<Integer> listaVisitados, int[][] matrizAdyacencia, int ciudadDestino) {
     int longitud = 0;
-    for (int i = 0; i < listaVisitados.size() - 1; i++) {
+    for (int i = 0; i < listaVisitados.size() -1; i++) {
         int ciudadActual = listaVisitados.get(i);
         int ciudadSiguiente = listaVisitados.get(i + 1);
         longitud += matrizAdyacencia[ciudadActual][ciudadSiguiente];
+        System.out.println(ciudadSiguiente);
     }
-    longitud += matrizAdyacencia[listaVisitados.get(listaVisitados.size() - 1)][listaVisitados.get(0)];
+    longitud += matrizAdyacencia[listaVisitados.get(listaVisitados.size() - 1)][ciudadDestino];
     return longitud;
 }
 
@@ -79,8 +80,8 @@ public static void main(String[] args) {
     estrella.setCiudadDestino(4);
     estrella.metodoEstrella(0);
     System.out.println(estrella.listaVisitados);
-    System.out.println("Distancia: " + calcularDistancia(estrella.listaVisitados, estrella.matrizAdyacencia));
-    }
+    System.out.println("Distancia: " + estrella.calcularDistancia(estrella.listaVisitados, estrella.matrizAdyacencia, estrella.ciudadDestino));
+}
 
 }
 

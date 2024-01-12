@@ -6,7 +6,8 @@ public class Main {
     public static void main(String[] args) {
         try {
             // Cambia "mi_programa.mlp" al nombre de tu archivo de texto
-            File file = new File("C:\\Users\\Acer Nitro 5\\Desktop\\NuevosRepositorios\\PruebaPseudocodigo\\PruebaPseudoCodigo\\prueba3.txt");
+            File file = new File("C:\\Users\\Acer Nitro 5\\Desktop\\NuevosRepositorios\\n" + //
+                    "uevoCompilador\\prueba.txt");
             Scanner scanner = new Scanner(file);
             
             // Lee el contenido del archivo y concatena las líneas en una sola cadena

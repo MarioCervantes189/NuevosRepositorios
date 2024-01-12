@@ -1,0 +1,16 @@
+// Declaración de variables
+entero edad
+real altura
+cadena mensaje
+
+// Operación de entrada
+leer edad
+leer altura
+
+// Operación de salida con expresión
+imprime "Edad: ", edad
+imprime "Altura: ", altura
+
+// Asignación y operación simple
+mensaje = "¡Hola, Mundo!"
+imprime mensaje
