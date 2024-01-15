@@ -1,9 +1,9 @@
 
 public class Variable {
     private String type;
-    private Integer value;
+    private double value;
 
-    public Variable(String type, int value) {
+    public Variable(String type, double value) {
         this.type = type;
         this.value = value;
     }
@@ -12,12 +12,12 @@ public class Variable {
         return type;
     }
 
-    public Integer getValue() {
+    public double getValue() {
         return value;
     }
 
-    public void setValue(Object value) {
-        this.value = (Integer) value;
+    public void setValue(double value) {
+        this.value = (double) value;
     }
 
     

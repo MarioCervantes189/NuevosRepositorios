@@ -26,7 +26,7 @@ public class Memory {
             Variable variable = entry.getValue();
 
             // Reemplaza la variable en la expresión por su valor si no es nulo
-            String variableValue = (variable.getValue() != null) ? String.valueOf(variable.getValue()) : "null";
+            String variableValue = (variable.getValue() != 0) ? String.valueOf(variable.getValue()) : "null";
 
             // Utiliza expresiones regulares para encontrar la variable en la expresión y reemplazarla
             expression = expression.replaceAll("\\b" + variableName + "\\b(?![^\\\"]*\\\")", variableValue);
