@@ -6,4 +6,4 @@ leer altura
 area = base * altura / 2
 SimprimeS El area es
 imprime (area)
-imprime (2+((2*3)/2))
+imprime 2+2*3/2

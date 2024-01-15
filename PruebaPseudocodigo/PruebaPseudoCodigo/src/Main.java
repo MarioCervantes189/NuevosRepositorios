@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         try {
-            // Cambia "mi_programa.mlp" al nombre de tu archivo de texto
+            // Lee el archivo de prueba
             File file = new File("C:\\Users\\Acer Nitro 5\\Desktop\\ayuda de aldair\\NuevosRepositorios\\PruebaPseudocodigo\\PruebaPseudoCodigo\\prueba2.txt");
             Scanner scanner = new Scanner(file);
             

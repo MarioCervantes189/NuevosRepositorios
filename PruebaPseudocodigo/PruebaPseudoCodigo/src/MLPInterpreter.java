@@ -6,13 +6,13 @@ import java.util.StringTokenizer;
 
 public class MLPInterpreter {
     private Memory memory;
-    private Stack<Object> operandStack;
-    private Stack<Character> operatorStack;
+   // private Stack<Object> operandStack;
+    //private Stack<Character> operatorStack;
 
     public MLPInterpreter() {
         memory = new Memory();
-        operandStack = new Stack<>();
-        operatorStack = new Stack<>();
+      //  operandStack = new Stack<>();
+      //  operatorStack = new Stack<>();
     }
 
     public void interpretProgram(String program) {
@@ -25,7 +25,7 @@ public class MLPInterpreter {
     }
 
     private void interpretLine(String line) {
-        if (line.startsWith("entero") || line.startsWith("real") || line.startsWith("cadena")) {
+        if (line.startsWith("entero") || line.startsWith("real")) {
             // Declaración de variables
             interpretVariableDeclaration(line);
         } else if (line.startsWith("leer")) {
@@ -52,7 +52,7 @@ public class MLPInterpreter {
 
         if (tokens.length == 2) {
             String keyword = tokens[0];
-                    String expresion = tokens[1];
+            String expresion = tokens[1];
 
                     if (keyword.equals("SimprimeS")) {
                         System.out.println(expresion);
@@ -69,7 +69,7 @@ public class MLPInterpreter {
             String tipo = tokens[0];
             String nombre = tokens[1];
 
-            // Verifica si el tipo es válido (entero, real, cadena)
+            // Verifica si el tipo es válido (entero, real)
             if (isValidType(tipo)) {
                 // Agrega la variable a la tabla de símbolos (Memory)
                 Variable variable = new Variable(tipo, 0);
@@ -83,7 +83,7 @@ public class MLPInterpreter {
     }
 
     private boolean isValidType(String type) {
-        return type.equals("entero") || type.equals("real") || type.equals("cadena");
+        return type.equals("entero") || type.equals("real");
     }
 
     private void interpretInputOperation(String line) {
@@ -132,18 +132,15 @@ public class MLPInterpreter {
             } catch (NumberFormatException e) {
                 System.err.println("Error: El valor proporcionado no es un entero válido.");
             }
-        } else if (type.equals("real")) {
-            try {
-                double doubleValue = Double.parseDouble(value);
-                variable.setValue(doubleValue);
-            } catch (NumberFormatException e) {
-                System.err.println("Error: El valor proporcionado no es un real válido.");
+            } else if (type.equals("real")) {
+                try {
+                    double doubleValue = Double.parseDouble(value);
+                    variable.setValue(doubleValue);
+                } catch (NumberFormatException e) {
+                    System.err.println("Error: El valor proporcionado no es un real válido.");
+                }
             }
-        } else if (type.equals("cadena")) {
-            variable.setValue(value);
         }
-
-    }
 
     private void interpretOutputOperation(String line) {
         // Implementa la lógica para manejar operaciones de salida
@@ -195,8 +192,8 @@ public class MLPInterpreter {
                 operandStack.push(Double.parseDouble(token));
             } else if (isOperator(token.charAt(0))) {
                 // Si el token es un operador
-                while (!operatorStack.isEmpty() && hasPrecedence(token.charAt(0), operatorStack.peek())) {
-                    // Realiza operaciones pendientes con operadores de mayor o igual precedencia
+                while (!operatorStack.isEmpty() && hasPrecedence(operatorStack.peek(),token.charAt(0))) {
+                    // Realiza operaciones pendientes con operadores de mayor precedencia
                     performOperation(operandStack, operatorStack);
                 }
                 // Coloca el operador actual en la pila de operadores
@@ -206,7 +203,7 @@ public class MLPInterpreter {
                 // Si el token es una variable, obtén su valor y colócalo en la pila de operandos
                 Variable variable = memory.getVariable(token);
                 Object value = variable.getValue();
-
+    
                 if (value instanceof Integer){
                     operandStack.push(((Integer) value).doubleValue());
                 } else if (value instanceof Double){
@@ -233,6 +230,7 @@ public class MLPInterpreter {
         // Convierte el resultado a String y lo devuelve
         return String.valueOf(operandStack.pop());
     }
+    
     
 
 
@@ -304,6 +302,8 @@ private double performOperation(double operand1, double operand2, char operator)
             throw new IllegalArgumentException("Error: Operador no válido");
     }
 }
+
+
 
     private void interpretAssignmentOrOperation(String line) {
         System.out.println("Depuración: Interpretando línea: " + line);

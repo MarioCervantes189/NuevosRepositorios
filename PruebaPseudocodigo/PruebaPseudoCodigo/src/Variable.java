@@ -20,7 +20,5 @@ public class Variable {
         this.value = (Integer) value;
     }
 
-    public String getName() {
-        return null;
-    }
+    
 }
