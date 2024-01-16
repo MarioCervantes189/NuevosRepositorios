@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
@@ -34,31 +35,12 @@ public class MLPInterpreter {
         } else if (line.startsWith("imprime")) {
             // Operación de salida
             interpretOutputOperation(line);
-        }
-          else if (line.startsWith("SimprimeS")) {
-            interpretOutputStrings(line);
         } else {
             // Asignación u otra operación
             interpretAssignmentOrOperation(line);
         }
     }
 
-    private void interpretOutputStrings(String line) {
-        
-            // Implementa la lógica para manejar operaciones de salida
-            // Formato esperado: imprime expresion
-             
-    String[] tokens = line.split("\\s+", 2);
-
-        if (tokens.length == 2) {
-            String keyword = tokens[0];
-            String expresion = tokens[1];
-
-                    if (keyword.equals("SimprimeS")) {
-                        System.out.println(expresion);
-                    }
-                }
-            }
 
             private void interpretVariableDeclaration(String line) {
         // Implementa la lógica para manejar la declaración de variables
@@ -142,6 +124,38 @@ public class MLPInterpreter {
             }
         }
 
+        private void interpretOutputOperation(String line) {
+        String [] tokens = line.split("\\s+", 2);
+        if (tokens.length == 2) {
+            String keyword = tokens[0];
+            String expresion = tokens[1];
+
+                if (keyword.equals("imprime")) {
+                    ArrayList<Character> words = new ArrayList<>();
+                    boolean inQuotation = false;
+
+                    for (int i = 0; i < expresion.length(); i++) {
+                        char c = expresion.charAt(i);                         
+                                if(c == '"'){
+                                    inQuotation = true;
+                                }
+                                else if (inQuotation){
+                                    words.add(c);
+                                }                                                                                  
+                        }
+                        for (int j = 0; j < words.size()-1; j++) {
+                            System.out.print(words.get(j));
+                            
+                        }
+                        
+                    }
+                }
+            }
+        
+    
+        
+        
+    /* 
     private void interpretOutputOperation(String line) {
         // Implementa la lógica para manejar operaciones de salida
             // Formato esperado: imprime expresion
@@ -168,7 +182,7 @@ public class MLPInterpreter {
                 System.err.println("Error: Formato incorrecto en la operación de salida.");
             }
         }
-    
+    */
 
     /**
      * @param expression
