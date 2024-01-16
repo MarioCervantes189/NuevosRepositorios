@@ -4,6 +4,4 @@ entero area
 leer base
 leer altura
 area = base * altura / 2
-SimprimeS El area es
-imprime (area)
-imprime 2+2*3/2
+imprime ('el perro es mio ',area,' ',2 + 2,' asdasdasd')

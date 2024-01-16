@@ -1,1 +1,1 @@
-imprime ("el perro es mio")
+imprime ('el perro es mio',2 + 2)

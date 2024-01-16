@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             // Lee el archivo de prueba
-            File file = new File("C:\\Users\\Acer Nitro 5\\Desktop\\NuevosRepositorios\\PruebaPseudocodigo\\PruebaPseudoCodigo\\src\\prueba5.txt");
+            File file = new File("prueba2.txt");
             Scanner scanner = new Scanner(file);
             
             // Lee el contenido del archivo y concatena las líneas en una sola cadena
