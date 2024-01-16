@@ -129,27 +129,31 @@ public class MLPInterpreter {
         if (tokens.length == 2) {
             String keyword = tokens[0];
             String expresion = tokens[1];
-
-                if (keyword.equals("imprime")) {
-                    ArrayList<Character> words = new ArrayList<>();
+            if (keyword.equals("imprime")){
+            try {
+                String resultado = evaluateExpression(expresion);
+                System.out.println(resultado);
+            }                                  
+             catch(Exception e) {
+                ArrayList<Character> words = new ArrayList<>();
                     boolean inQuotation = false;
 
                     for (int i = 0; i < expresion.length(); i++) {
-                        char c = expresion.charAt(i);                         
-                                if(c == '"'){
-                                    inQuotation = true;
-                                }
-                                else if (inQuotation){
-                                    words.add(c);
-                                }                                                                                  
+                        char c = expresion.charAt(i);
+                        if (c == '"') {
+                            inQuotation = true;
+                        } else if (inQuotation) {
+                            words.add(c);
                         }
-                        for (int j = 0; j < words.size()-1; j++) {
-                            System.out.print(words.get(j));
-                            
-                        }
-                        
                     }
-                }
+                    for (int j = 0; j < words.size() - 1; j++) {
+                        System.out.print(words.get(j));
+                    }
+            }
+        }
+        }
+
+                
             }
         
     
