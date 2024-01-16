@@ -328,7 +328,7 @@ private double performOperation(double operand1, double operand2, char operator)
         String variableName = tokens[0].trim();
         String expression = tokens[1].trim();
 
-        // Verifica si la variable está declarada
+       
         Variable variable = memory.getVariable(variableName);
         if (variable != null) {
             // Evalúa la expresión y asigna el resultado a la variable
